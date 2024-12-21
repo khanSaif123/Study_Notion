@@ -8,3 +8,5 @@ export const ACCOUNT_TYPE = {
     DRAFT: "Draft",
     PUBLISHED: "Published",
   }
+
+  
