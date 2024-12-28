@@ -208,4 +208,43 @@ exports.getUserDetails = async (req, res) =>{
 
     console.log("userDetail -> ", userDetail)
 }
-  
+
+exports.getEnrolledCourses = async (req, res) => {
+    try {
+        const userId = req.user.id
+        let userDetails = await User.findOne({
+            _id:userId
+        })
+        .populate({
+            path:"courses",
+            populate: {
+                path: "courseContent",
+                populate: {
+                    path: "subSection"
+                }
+            }
+        }).exec()
+
+        // if user not found
+        if(!userDetails){
+            return res.status(404).json({
+                success: false,
+                message: `Could not found the user with id: ${userDetails}`,
+            });
+        }
+
+        console.log("User Deatils of EnrolledCourses -----> ", userDetails)
+        
+        return res.status(200).json({
+            success: true,
+            data: userDetails
+        })
+
+    } catch (error) {
+        console.log("Error while fetching the enrolledCourses")
+        return res.status(500).json({
+            message:false,
+            message: error.message
+        })
+    }
+}

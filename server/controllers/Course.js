@@ -168,7 +168,7 @@ exports.getCourseDetails = async (req, res) =>{
 }
 
 // getFullCourseDetails
-exports.fetFullCourseDetails = async (req, res) =>{
+exports.getFullCourseDetails = async (req, res) =>{
     const {courseId} = req.body
     const userId = req.user.id
 

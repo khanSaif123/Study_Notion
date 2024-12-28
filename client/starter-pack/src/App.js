@@ -10,14 +10,28 @@ import UpdatePassword from "./pages/UpdatePassword";
 import VerifyEmail from "./pages/VerifyEmail";
 import ResetPasswordComplete from "./pages/ResetPasswordComplete";
 import About from "./pages/About";
+import MyProfile from "../src/components/core/Dashboard/MyProfile";
+import PrivateRoute from "./components/core/Auth/PrivateRoute";
+import Dashboard from "./pages/Dashboard";
+import Error from "./pages/Error"
+import Contact from "./pages/Contact";
+import EnrolledCourses from "./components/core/Dashboard/EnrolledCourses";
+import Cart from "./components/core/Dashboard/Cart";
+import { ACCOUNT_TYPE } from "./utils/constants";
+import { useSelector } from "react-redux";
+import AddCourse from "./components/core/Dashboard/AddCourse";
 
 function App() {
+
+  const {user} = useSelector((state) => state.profile)
+
   return (
     <div className="w-screen min-h-screen bg-richblack-900">
       <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
-
+        <Route path="/about" element = {<About/>}/>
+        <Route path="/contact" element={<Contact/>}/>
 
         {/* open route for only non logged in user */}
         <Route
@@ -74,14 +88,48 @@ function App() {
           }
         />
 
-      <Route
-          path="/about"
+      
+
+  {/* private routes only access when u are logged in */}
+        <Route
+       
           element = {
-            <OpenRoute>
-              <About/>
-            </OpenRoute>
+            <PrivateRoute>
+              <Dashboard/>
+            </PrivateRoute>
           }
-        />
+        >
+          <Route path="/dashboard/my-profile" element={<MyProfile/>}/>
+          
+
+          {
+            user?.accountType === ACCOUNT_TYPE.STUDENT && (
+              <>
+                <Route path="/dashboard/enrolled-courses" element={<EnrolledCourses/>}/>
+                <Route path="/dashboard/cart" element={<Cart/>}/>
+              </>
+            )
+          }
+
+          {
+            user?.accountType === ACCOUNT_TYPE.INSTRUCTOR && (
+              <>
+                <Route path="/dashboard/enrolled-courses" element={<EnrolledCourses/>}/>
+                <Route path="/dashboard/add-course" element={<AddCourse/>}/>
+              </>
+            )
+          }
+
+        </Route>
+
+
+        {/* add contact-us route here */}
+
+        
+       
+
+
+        <Route path="*" element={<Error />} />
       </Routes> 
 
       

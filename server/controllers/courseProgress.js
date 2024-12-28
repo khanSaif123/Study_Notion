@@ -1,5 +1,5 @@
 const CourseProgress = require("../models/CourseProgress")
-const Subsection = require("../models/Subsection")
+const Subsection = require("../models/SubSection")
 
 exports.updateCourseProgress = async (req, res) =>{
     // get courseId, userId, subSectionId.

@@ -15,8 +15,8 @@ const About = () => {
         {/* section - 1 */}
         <section className="bg-richblack-700">
            <div className="relative mx-auto flex w-11/12 max-w-maxContent flex-col justify-between gap-10 text-center text-white">
-            <div>About us</div>
-                    <header className="mx-auto py-20 text-4xl font-semibold lg:w-[70%]">
+                    <span className='text-xl mt-8 lg:mt-10 font-semibold text-richblack-200'>About Us</span>
+                    <header className="mx-auto py-16 lg:py-10 text-4xl font-semibold lg:w-[70%]">
                     Driving Innovation in Online Education for a
                     <HighlightText text={"Brighter Future"} />
                     <p className="mx-auto mt-3 text-center text-base font-medium text-richblack-300 lg:w-[95%]">
