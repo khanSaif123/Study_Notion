@@ -86,9 +86,13 @@ const Navbar = () => {
                                                 <div className='flex gap-20 bg-richblack-25 mb-2 pl-5 rounded-lg
                                                 pt-2 pb-2 hover:bg-richblack-50 cursor-pointer
                                                 ' key={index}>
-                                                <Link to={`${subLink?.name}`} key={index}>
-                                                    <p className='font-semibold'>{subLink?.name}</p>
-                                                </Link>
+                                              <Link  to={`/catalog/${subLink.name
+                                                        .split(" ")
+                                                        .join("-")
+                                                        .toLowerCase()}`}key={index}>
+                                                <p className='font-semibold'>{subLink?.name}</p>
+                                              </Link>
+
                                                 </div>
                                             ) )
                                     ) : (<div></div>)

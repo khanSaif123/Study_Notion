@@ -18,6 +18,7 @@ const userRoutes = require('../server/routes/user')
 const profileRoutes = require('../server/routes/profile')
 const courseRoutes = require('../server/routes/Courses')
 const contactusRoutes = require('../server/routes/Contact')
+const paymentRoutes = require('../server/routes/Payment')
 
 // middleWares
 app.use(express.json())
@@ -43,6 +44,7 @@ app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/profile", profileRoutes)
 app.use("/api/v1/course", courseRoutes)
 app.use("/api/v1/reach", contactusRoutes)
+app.use("/api/v1/payment", paymentRoutes)
 
 // default route
 app.get('/', (req, res)=>{

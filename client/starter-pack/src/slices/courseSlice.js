@@ -15,8 +15,8 @@ const courseSlice = createSlice({
       state.step = action.payload
     },
     setCourse: (state, action) => {
-      state.course = action.payload
-    },
+      state.course = action.payload; 
+    },    
     setEditCourse: (state, action) => {
       state.editCourse = action.payload
     },

@@ -41,4 +41,16 @@ export const courseEndpoints = {
       BASE_URL + "/course/get-full-course", // done
     LECTURE_COMPLETION_API: BASE_URL + "/course/update-course-progress", // done
     CREATE_RATING_API: BASE_URL + "/course/create-rating", // done
+}
+
+// CATALOG PAGE DATA
+export const catalogData = {
+    CATALOGPAGEDATA_API: BASE_URL + "/course/category-page-details",
+}
+
+// STUDENTS ENDPOINTS
+export const studentEndpoints = {
+    COURSE_PAYMENT_API: BASE_URL + "/payment/capture-payment",
+    COURSE_VERIFY_API: BASE_URL + "/payment/verify-payment",
+    SEND_PAYMENT_SUCCESS_EMAIL_API: BASE_URL + "/payment/send-payment-successfullEmail",
   }

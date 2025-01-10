@@ -2,7 +2,7 @@ const express = require('express')
 const router = express()
 
 // import category controllers;
-const {createCategories, showAllCategories} = require('../controllers/Category')
+const {createCategories, showAllCategories, categoryPageDetails} = require('../controllers/Category')
 
 // import course routes
 const {createCourse, getCourseDetails, deleteCourse, getAllCourse, getFullCourseDetails,
@@ -35,11 +35,12 @@ router.get('/get-instructor-course', auth, isInstructor, getInstructorCourse)
 // category routes
 router.post('/create-category',auth, isAdmin, createCategories)
 router.get('/show-all-category', showAllCategories)
+router.post('/category-page-details', categoryPageDetails)
 
 // Section Routes.
-router.post('/create-section', createSection)
+router.post('/create-section',auth, isInstructor, createSection)
 router.post('/update-section',auth, isInstructor, updateSection )
-router.delete('/delete-section', auth, isInstructor, deleteSection)
+router.post('/delete-section', auth, isInstructor, deleteSection)
 
 // subSection routes.
 router.post('/create-sub-section',auth, isInstructor, createSubSection)

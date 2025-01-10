@@ -141,7 +141,9 @@ export const createSection = async (data, token) => {
       throw new Error("Could Not Create Section")
     }
     toast.success("Course Section Created")
-    result = response?.data?.updatedCourse
+    result = response?.data?.updateCourseDetails
+
+    console.log("Update Course Details --> ", result)
   } catch (error) {
     console.log("CREATE SECTION API ERROR............", error)
     toast.error(error.message)
@@ -186,6 +188,8 @@ export const updateSection = async (data, token) => {
     }
     toast.success("Course Section Updated")
     result = response?.data?.data
+
+    console.log("Inside the edit this is respons ----> ", result)
   } catch (error) {
     console.log("UPDATE SECTION API ERROR............", error)
     toast.error(error.message)
@@ -229,7 +233,8 @@ export const deleteSection = async (data, token) => {
       throw new Error("Could Not Delete Section")
     }
     toast.success("Course Section Deleted")
-    result = response?.data?.data
+    result = response?.data?.updatedCourse
+
   } catch (error) {
     console.log("DELETE SECTION API ERROR............", error)
     toast.error(error.message)

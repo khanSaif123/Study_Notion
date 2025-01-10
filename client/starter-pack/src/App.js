@@ -20,6 +20,8 @@ import Cart from "./components/core/Dashboard/Cart";
 import { ACCOUNT_TYPE } from "./utils/constants";
 import { useSelector } from "react-redux";
 import AddCourse from "./components/core/Dashboard/AddCourse";
+import Catalog from "./pages/Catalog";
+import CourseDetails from "./pages/CourseDetails";
 
 function App() {
 
@@ -32,6 +34,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element = {<About/>}/>
         <Route path="/contact" element={<Contact/>}/>
+        <Route path="/catalog/:catalogName" element={<Catalog/>}/>
+        <Route path="courses/:courseId" element={<CourseDetails />} />
 
         {/* open route for only non logged in user */}
         <Route
@@ -119,6 +123,15 @@ function App() {
               </>
             )
           }
+
+           {/* {user?.accountType === ACCOUNT_TYPE.STUDENT && (
+            <>
+              <Route
+                path="view-course/:courseId/section/:sectionId/sub-section/:subSectionId"
+                element={<VideoDetails />}
+              />
+            </>
+          )} */}
 
         </Route>
 
