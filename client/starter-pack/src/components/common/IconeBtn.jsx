@@ -1,9 +1,9 @@
 import React from 'react'
 
-const IconeBtn = ({ text, onClick, children, disable, outline = false, customClasses, type }) => {
+const IconeBtn = ({ text, onClick, children, disabled = false, outline = false, customClasses, type }) => {
   return (
     <button 
-        disabled={disable}
+         disabled={disabled}
         onClick={onClick} // Corrected here
         type={type}
         className={`flex items-center ${

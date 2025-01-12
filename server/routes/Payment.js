@@ -7,7 +7,7 @@ const {capturePayment, verifyPayment, sendPaymentSuccessEmail} = require('../con
 const {auth, isAdmin, isInstructor, isStudent} = require("../middlewares/auth")
 
 router.post("/capture-payment", auth, isStudent, capturePayment)
-router.post("/verify-payment", auth, isStudent, isStudent)
+router.post("/verify-payment", auth, isStudent, verifyPayment)
 router.post("/send-payment-successfullEmail", auth, isStudent, sendPaymentSuccessEmail)
 
 module.exports = router

@@ -25,7 +25,7 @@
     const { loading } = useSelector((state) => state.profile)
     const { paymentLoading } = useSelector((state) => state.course)
     const dispatch = useDispatch()
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     // Getting courseId from url parameter
     const { courseId } = useParams()
@@ -47,12 +47,12 @@
         })()
     }, [courseId])
 
-    // console.log("response: ", response)
+    console.log("COURSE response: ", response)
 
     // Calculating Avg Review count
     const [avgReviewCount, setAvgReviewCount] = useState(0)
     useEffect(() => {
-        const count = GetAvgRating(response?.data?.courseDetails.ratingAndReviews)
+        const count = GetAvgRating(response?.ratingAndReviews)
         setAvgReviewCount(count)
     }, [response])
     // console.log("avgReviewCount: ", avgReviewCount)
@@ -63,17 +63,17 @@
     const handleActive = (id) => {
         // console.log("called", id)
         setIsActive(
-        !isActive.includes(id)
-            ? isActive.concat([id])
-            : isActive.filter((e) => e != id)
-        )
+            !isActive.includes(id)
+              ? isActive.concat([id])
+              : isActive.filter((e) => e !== id) // Changed != to !==
+          );
     }
 
     // Total number of lectures
     const [totalNoOfLectures, setTotalNoOfLectures] = useState(0)
     useEffect(() => {
         let lectures = 0
-        response?.data?.courseDetails?.courseContent?.forEach((sec) => {
+        response?.courseContent?.forEach((sec) => {
         lectures += sec.subSection.length || 0
         })
         setTotalNoOfLectures(lectures)
@@ -86,23 +86,29 @@
         </div>
         )
     }
-    if (!response.success) {
-        return <Error />
-    }
+    // if (!response.success) {
+    //     return <Error />
+    // }
 
-    const {
-        _id: course_id,
-        courseName,
-        courseDescription,
-        thumbnail,
-        price,
-        whatYouWillLearn,
-        courseContent,
-        ratingAndReviews,
-        instructor,
-        studentsEnroled,
-        createdAt,
-    } = response.data?.courseDetails
+    // const {
+    //     courseName,
+    //     courseDescription,
+    //     thumbnail,
+    //     price,
+    //     whatYouWillLearn,
+    //     courseContent,
+    //     ratingAndReviews,
+    //     instructor,
+    //     studentsEnroled,
+    //     createdAt,
+    // } = response.data?.courseContent
+
+    const { thumbnail, courseName, courseDescription, 
+        ratingAndReviews, studentsEnroled, instructor,
+         createdAt, price, whatYouWillLearn, courseContent } = response || {}
+
+
+
 
     const handleBuyCourse = () => {
         if (token) {
@@ -186,7 +192,7 @@
             {/* Courses Card */}
             <div className="right-[1rem] top-[60px] mx-auto hidden min-h-[600px] w-1/3 max-w-[410px] translate-y-24 md:translate-y-0 lg:absolute  lg:block">
                 <CourseDetailsCard
-                course={response?.data?.courseDetails}
+                course={response}
                 setConfirmationModal={setConfirmationModal}
                 handleBuyCourse={handleBuyCourse}
                 />

@@ -161,7 +161,7 @@ export default function CourseBuilderForm() {
         >
           Back
         </button>
-        <IconeBtn disabled={loading} text="Next" onclick={goToNext}>
+        <IconeBtn disabled={loading} text="Next" onClick={goToNext}>
           <MdNavigateNext />
         </IconeBtn>
       </div>

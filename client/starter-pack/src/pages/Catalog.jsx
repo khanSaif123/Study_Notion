@@ -26,9 +26,10 @@ function Catalog() {
     ;(async () => {
       try {
         const res = await axiosConnector("GET", categories.CATEGORIES_API)
-        const category_id = res?.data?.data?.filter(
+        const category_id = res?.data?.data?.find(
           (ct) => ct.name.split(" ").join("-").toLowerCase() === catalogName
-        )[0]._id
+        )?._id
+        
         setCategoryId(category_id)
       } catch (error) {
         console.log("Could not fetch Categories.", error)

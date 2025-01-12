@@ -6,7 +6,7 @@ const {createCategories, showAllCategories, categoryPageDetails} = require('../c
 
 // import course routes
 const {createCourse, getCourseDetails, deleteCourse, getAllCourse, getFullCourseDetails,
-    getInstructorCourse
+    getInstructorCourse, editCourse
 } = require('../controllers/Course')
 
 // import middleware.
@@ -26,10 +26,11 @@ const {createRating, getAllRatingReview, getAverageRating} = require('../control
 
 // course routes.
 router.post('/create-course', auth, isInstructor, createCourse)
+router.post("/edit-course", auth, isInstructor, editCourse)
 router.post('/get-course-details', getCourseDetails)
-router.post('/detele-course', deleteCourse)
+router.delete('/delete-course', deleteCourse)
 router.get('/get-all-course', getAllCourse)
-router.get('/get-full-course', auth, getFullCourseDetails)
+router.post('/get-full-course', auth, getFullCourseDetails)
 router.get('/get-instructor-course', auth, isInstructor, getInstructorCourse)
 
 // category routes

@@ -72,8 +72,8 @@ exports.categoryPageDetails = async (req, res) => {
                 populate:"ratingAndReviews"
             }).exec()
 
-            console.log("Selected course : ", selectedCategoryCourse)
-
+            console.log("SELECTED COURSE", selectedCategoryCourse)
+            console.log("Selected Course courses", selectedCategoryCourse.courses)
             // validate.
             if(!selectedCategoryCourse){
                 console.log("Category not found.")
@@ -95,13 +95,14 @@ exports.categoryPageDetails = async (req, res) => {
             const showOtherCategoryCourse = await Category.find(
                 {_id: {$ne: categoryId}})
             
-            const differentCategory = await Category.findOne(
-                showOtherCategoryCourse[getRandomInt(showOtherCategoryCourse.length)]._id
-            )
-            .populate({
-                path:"courses",
-                match:{status: "Published"}
-            }).exec()
+                const differentCategory = await Category.findOne(
+                    showOtherCategoryCourse[getRandomInt(showOtherCategoryCourse.length)]
+                  )
+                  .populate({
+                    path: "courses",
+                    match: { status: "Published" },
+                    populate: "ratingAndReviews",
+                  }).exec()
 
             // Get top-selling courses across all categories
             const allCategories = await Category.find()
@@ -124,6 +125,7 @@ exports.categoryPageDetails = async (req, res) => {
                 }
             })
     } catch (error) {
+        console.log("Error While getting Category PAGE DETAILS - ", error)
         return res.status(500).json({
             success: false,
             message: "Internal server error",
