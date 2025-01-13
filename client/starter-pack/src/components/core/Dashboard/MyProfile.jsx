@@ -33,7 +33,7 @@ const MyProfile = () => {
         </div>
         <IconeBtn
           text="Edit"
-          onclick={() => {
+          onClick={() => {
             navigate("/dashboard/settings")
           }}
         >
@@ -46,7 +46,7 @@ const MyProfile = () => {
           <p className="text-lg font-semibold text-richblack-5">About</p>
           <IconeBtn
             text="Edit"
-            onclick={() => {
+            onClick={() => {
               navigate("/dashboard/settings")
             }}
           >
@@ -71,7 +71,7 @@ const MyProfile = () => {
           </p>
           <IconeBtn
             text="Edit"
-            onclick={() => {
+            onClick={() => {
               navigate("/dashboard/settings")
             }}
           >

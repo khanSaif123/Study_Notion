@@ -25,6 +25,7 @@ import Instructor from "./components/core/Dashboard/Instructor";
 import MyCourses from "./components/core/Dashboard/MyCourses";
 import AddCourse from "./components/core/Dashboard/AddCourse";
 import EditCourse from "./components/core/Dashboard/EditCourse";
+import Settings from "./components/core/Dashboard/Settings";
 
 function App() {
 
@@ -107,7 +108,7 @@ function App() {
           }
         >
           <Route path="/dashboard/my-profile" element={<MyProfile/>}/>
-          {/* dashboard/settings are pending */}
+          <Route path="dashboard/Settings" element={<Settings />} />
           
 
           {
