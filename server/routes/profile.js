@@ -3,7 +3,8 @@ const router = express.Router()
 
 const {auth,isInstructor} = require('../middlewares/auth')
 
-const {updateDisplayPicture, updateProfile, getUserDetails, deleteAccount, getEnrolledCourses} = require('../controllers/Profile')
+const {updateDisplayPicture, updateProfile, getUserDetails, 
+    deleteAccount, getEnrolledCourses, instructorDashboard} = require('../controllers/Profile')
 
 
 
@@ -14,5 +15,6 @@ router.get('/getUserDeatil', auth ,getUserDetails)
 
 // get Enrolled Courses
 router.get("/get-enrolled-courses", auth, getEnrolledCourses)
+router.get("/instructorDashboard", auth, isInstructor, instructorDashboard)
 
 module.exports = router

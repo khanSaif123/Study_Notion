@@ -1,6 +1,7 @@
 const Profile = require('../models/Profile')
 const Profle = require('../models/Profile')
 const User = require('../models/User')
+const Course = require('../models/Course')
 const {uploadImageToCloudinary} = require('../utils/imageUploader')
 require('dotenv').config()
 
@@ -246,5 +247,35 @@ exports.getEnrolledCourses = async (req, res) => {
             message:false,
             message: error.message
         })
+    }
+}
+
+// instructor dashboard.
+exports.instructorDashboard = async (req, res) => {
+    try {
+        // what user login is the instructor
+      const courseDetails = await Course.find({ instructor: req.user.id })
+  
+      const courseData = courseDetails.map((course) => {
+        const totalStudentsEnrolled = course.studentsEnroled.length
+        const totalAmountGenerated = totalStudentsEnrolled * course.price
+  
+        // Create a new object with the additional fields
+        const courseDataWithStats = {
+          _id: course._id,
+          courseName: course.courseName,
+          courseDescription: course.courseDescription,
+          // Include other course properties as needed
+          totalStudentsEnrolled,
+          totalAmountGenerated,
+        }
+  
+        return courseDataWithStats
+      })
+  
+      res.status(200).json({ courses: courseData })
+    } catch (error) {
+      console.error("Error while getting the instructor data for chart - ",error)
+      res.status(500).json({ message: "Server Error" })
     }
 }

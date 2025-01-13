@@ -6,7 +6,6 @@ import { fetchInstructorCourses } from "../../../services/operations/courseDetai
 import { getInstructorData } from "../../../services/operations/profileApi"
 import InstructorChart from "./InstructorDasboard/InstructorChart"
 
-
 export default function Instructor() {
   const { token } = useSelector((state) => state.auth)
   const { user } = useSelector((state) => state.profile)
@@ -19,6 +18,7 @@ export default function Instructor() {
       setLoading(true)
       const instructorApiData = await getInstructorData(token)
       const result = await fetchInstructorCourses(token)
+      
       console.log(instructorApiData)
       if (instructorApiData.length) setInstructorData(instructorApiData)
       if (result) {
