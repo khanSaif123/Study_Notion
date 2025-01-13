@@ -56,7 +56,7 @@ export default function Sidebar() {
           
           {/* Settings link */}
           <SidebarLink
-            link={{ name: "Setting", path: "/dashboard/setting" }}
+            link={{ name: "Setting", path: "/dashboard/settings" }}
             iconName="VscSettingsGear"
           />
           

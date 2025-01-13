@@ -2,6 +2,7 @@ import React from 'react'
 
 import ContactDetails from "../components/core/ContactUsPage/ContactDetails"
 import ContactForm from "../components/core/ContactUsPage/ContactForm"
+import Footer from '../components/common/Footer'
 
 const Contact = () => {
   return (
@@ -16,12 +17,10 @@ const Contact = () => {
                 <ContactForm/>
             </div>
         </div>
-
-       {/* contact form */}
       
 
        {/* slider and footer pending */}
-    
+       <Footer/>
     </div>
   )
 }

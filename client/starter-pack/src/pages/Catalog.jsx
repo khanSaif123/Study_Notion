@@ -14,6 +14,7 @@ import { getCatalogPageData } from "../services/operations/pageAndComponentDatas
 import Error from "./Error"
 import Course_Card from "../components/core/Catalog/Course_Card"
 import CourseSlider from "../components/core/Catalog/CourseSlider"
+import Footer from "../components/common/Footer"
 
 function Catalog() {
   const { loading } = useSelector((state) => state.profile)
@@ -141,6 +142,7 @@ function Catalog() {
       </div>
 
       {/* <Footer /> */}
+      <Footer/>
     </>
   )
 }
