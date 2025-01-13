@@ -26,6 +26,8 @@ import MyCourses from "./components/core/Dashboard/MyCourses";
 import AddCourse from "./components/core/Dashboard/AddCourse";
 import EditCourse from "./components/core/Dashboard/EditCourse";
 import Settings from "./components/core/Dashboard/Settings";
+import ViewCourse from "./pages/ViewCourse";
+import VideoDetails from "./components/core/ViewCourse/VideoDetails";
 
 function App() {
 
@@ -132,14 +134,23 @@ function App() {
             )
           }
 
-           {/* {user?.accountType === ACCOUNT_TYPE.STUDENT && (
-            <>
-              <Route
-                path="view-course/:courseId/section/:sectionId/sub-section/:subSectionId"
-                element={<VideoDetails />}
-              />
-            </>
-          )} */}
+           {/* For the watching course lectures */}
+            <Route
+              element={
+                <PrivateRoute>
+                  <ViewCourse />
+                </PrivateRoute>
+              }
+            >
+              {user?.accountType === ACCOUNT_TYPE.STUDENT && (
+                <>
+                  <Route
+                    path="view-course/:courseId/section/:sectionId/sub-section/:subSectionId"
+                    element={<VideoDetails />}
+                  />
+                </>
+              )}
+            </Route>
 
         </Route>
 
