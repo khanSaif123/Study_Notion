@@ -9,10 +9,8 @@ const EnrolledCourses = () => {
 
     const token = useSelector((state) => state.auth.token)
     const navigate = useNavigate()
-    console.log("Token for enrolledCourses ----> ", token)
 
     const [enrolledCourses, setEnrolledCourses] = useState(null)
-    console.log("Checking Enrolled courses details",enrolledCourses)
     
 
     // backend call
@@ -20,7 +18,6 @@ const EnrolledCourses = () => {
         try {
 
             const response = await getUserEnrolledCourses(token)
-            console.log('Frontend enrolled courses -->', response)
 
             setEnrolledCourses(response)
             

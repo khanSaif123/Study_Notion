@@ -21,7 +21,7 @@ const Navbar = () => {
 
     // API CALL FOR GETTING CATALOG data.
     const [subLinks, setSubLinks] = useState([])
-    console.log("subLinks", subLinks)
+    
 
     //  Fetch category data
      const fetchCategories = async () => {

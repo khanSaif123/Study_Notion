@@ -19,7 +19,6 @@ import { COURSE_STATUS } from "../../../../utils/constants"
 import ConfirmationModal from "../../../common/ConfirmationModal"
 
 export default function CoursesTable({ courses, setCourses }) {
-  const dispatch = useDispatch()
   const navigate = useNavigate()
   const { token } = useSelector((state) => state.auth)
   const [loading, setLoading] = useState(false)
@@ -79,10 +78,10 @@ export default function CoursesTable({ courses, setCourses }) {
                     className="h-[148px] w-[220px] rounded-lg object-cover"
                   />
                   <div className="flex flex-col justify-between">
-                    <p className="text-lg font-semibold text-richblack-5">
+                    <div className="text-lg font-semibold text-richblack-5">
                       {course.courseName}
-                    </p>
-                    <p className="text-xs text-richblack-300">
+                    </div>
+                    <div className="text-xs text-richblack-300">
                       {course.courseDescription.split(" ").length >
                       TRUNCATE_LENGTH
                         ? course.courseDescription
@@ -90,22 +89,22 @@ export default function CoursesTable({ courses, setCourses }) {
                             .slice(0, TRUNCATE_LENGTH)
                             .join(" ") + "..."
                         : course.courseDescription}
-                    </p>
-                    <p className="text-[12px] text-white">
+                    </div>
+                    <div className="text-[12px] text-white">
                       Created: {formatDate(course.createdAt)}
-                    </p>
+                    </div>
                     {course.status === COURSE_STATUS.DRAFT ? (
-                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-pink-100">
+                      <div className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-pink-100">
                         <HiClock size={14} />
                         Drafted
-                      </p>
+                      </div>
                     ) : (
-                      <p className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-yellow-100">
+                      <div className="flex w-fit flex-row items-center gap-2 rounded-full bg-richblack-700 px-2 py-[2px] text-[12px] font-medium text-yellow-100">
                         <div className="flex h-3 w-3 items-center justify-center rounded-full bg-yellow-100 text-richblack-700">
                           <FaCheck size={8} />
                         </div>
                         Published
-                      </p>
+                      </div>
                     )}
                   </div>
                 </Td>
